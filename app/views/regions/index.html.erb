@@ -16,9 +16,9 @@
       <tr>
         <td><%= region.country.name %></td>
         <td><%= region.name %></td>
-        <td><%= link_to 'Show', region %></td>
-        <td><%= link_to 'Edit', edit_region_path(region) %></td>
-        <td><%= link_to 'Destroy', region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', country_region_path(@country, region) %></td>
+        <td><%= link_to 'Edit', edit_country_region_path(@country, region) %></td>
+        <td><%= link_to 'Destroy', country_region_path(@country, region), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Region', new_region_path %>
+<%= link_to 'New Region', new_country_region_path(@country) %>

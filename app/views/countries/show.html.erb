@@ -5,5 +5,7 @@
   <%= @country.name %>
 </p>
 
+<%= link_to 'VER MIS Regiones', country_regions_path(@country) %>
+
 <%= link_to 'Edit', edit_country_path(@country) %> |
 <%= link_to 'Back', countries_path %>

@@ -1,9 +1,10 @@
 class RegionsController < ApplicationController
   before_action :set_region, only: %i[ show edit update destroy ]
+  before_action :set_country
 
   # GET /regions or /regions.json
   def index
-    @regions = Region.all
+    @regions = @country.regions
   end
 
   # GET /regions/1 or /regions/1.json
@@ -23,7 +24,7 @@ class RegionsController < ApplicationController
 
   # POST /regions or /regions.json
   def create
-    @region = Region.new(region_params)
+    @region = @country.regions.build(region_params)
 
     respond_to do |format|
       if @region.save
@@ -62,6 +63,10 @@ class RegionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_region
       @region = Region.find(params[:id])
+    end
+
+    def set_country
+      @country = Country.find(params[:country_id])
     end
 
     # Only allow a list of trusted parameters through.
