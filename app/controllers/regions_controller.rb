@@ -13,10 +13,12 @@ class RegionsController < ApplicationController
   # GET /regions/new
   def new
     @region = Region.new
+    @countries = Country.pluck(:name, :id)
   end
 
   # GET /regions/1/edit
   def edit
+    @countries = Country.pluck(:name, :id)
   end
 
   # POST /regions or /regions.json
@@ -64,6 +66,6 @@ class RegionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def region_params
-      params.require(:region).permit(:country_id)
+      params.require(:region).permit(:country_id, :name)
     end
 end
