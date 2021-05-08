@@ -2,4 +2,7 @@
 
 <%= render 'form', country: @country %>
 
+<%= render partial: 'table', locals: {country: @country, countries: @countries} %>
+
+
 <%= link_to 'Back', countries_path %>

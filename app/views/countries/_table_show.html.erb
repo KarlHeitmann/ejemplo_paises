@@ -1,0 +1,8 @@
+  <%= turbo_frame_tag "table_show_#{country.id}" do %>
+    <h2>Lista de regiones: </h2>
+    <ul>
+      <% country.regions.each do |region| %>
+        <li><strong>Nombre:</strong> <%= region.name %></li>
+      <% end %>
+    </ul>
+  <% end %>

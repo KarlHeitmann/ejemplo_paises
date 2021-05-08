@@ -4,15 +4,18 @@ class CountriesController < ApplicationController
   # GET /countries or /countries.json
   def index
     @countries = Country.all
+    @country = Country.new
   end
 
   # GET /countries/1 or /countries/1.json
   def show
+    render partial: 'table_show', locals: {country: @country}
   end
 
   # GET /countries/new
   def new
     @country = Country.new
+    @countries = Country.all
   end
 
   # GET /countries/1/edit
@@ -22,15 +25,13 @@ class CountriesController < ApplicationController
   # POST /countries or /countries.json
   def create
     @country = Country.new(country_params)
+    @countries = Country.all
 
-    respond_to do |format|
-      if @country.save
-        format.html { redirect_to @country, notice: "Country was successfully created." }
-        format.json { render :show, status: :created, location: @country }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @country.errors, status: :unprocessable_entity }
-      end
+    if @country.save
+      @country = Country.new
+      render partial: 'table', locals: {country: @country, countries: @countries}
+    else
+      render partial: 'table', locals: {country: @country, countries: @countries}
     end
   end
 
