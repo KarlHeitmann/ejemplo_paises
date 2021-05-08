@@ -23,15 +23,13 @@ class CountriesController < ApplicationController
   # POST /countries or /countries.json
   def create
     @country = Country.new(country_params)
+    @countries = Country.all
 
-    respond_to do |format|
-      if @country.save
-        format.html { redirect_to @country, notice: "Country was successfully created." }
-        format.json { render :show, status: :created, location: @country }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @country.errors, status: :unprocessable_entity }
-      end
+    if @country.save
+      @country = Country.new
+      render partial: 'table', locals: {country: @country, countries: @countries}
+    else
+      render partial: 'table', locals: {country: @country, countries: @countries}
     end
   end
 
