@@ -1,3 +1,9 @@
+<select name="city" id="listado-de-opciones">
+  <option value="Berlin">Configuracion 1</option>
+  <option value="Chicago">Configuracion 2</option>
+  <option value="Madrid">Configuracion 3</option>
+</select>
+
 <%= form_with(model: region) do |form| %>
   <% if region.errors.any? %>
     <div id="error_explanation">
@@ -24,3 +30,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= javascript_pack_tag 'cambiar_seleccion' %>
