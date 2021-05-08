@@ -9,6 +9,7 @@ class CountriesController < ApplicationController
 
   # GET /countries/1 or /countries/1.json
   def show
+    render partial: 'table_show', locals: {country: @country}
   end
 
   # GET /countries/new
