@@ -24,6 +24,10 @@
   </tbody>
 </table>
 
+<h1>Países</h1>
+
+<%= render partial: 'countries/table', locals: {country: @country, countries: @countries} %>
+
 <br>
 
 <%= link_to 'New Region', new_region_path %>

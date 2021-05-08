@@ -2,7 +2,7 @@
 
 <h1>Countries</h1>
 
-<%= render 'table', country: @country, countries: @countries %>
+<%= render partial: 'table', locals: {country: @country, countries: @countries} %>
 
 <br>
 
